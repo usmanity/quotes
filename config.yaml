@@ -1,0 +1,3 @@
+---
+# after a quote is added, should the program commit to git?
+commit_to_git: false
