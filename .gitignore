@@ -1,3 +1,5 @@
+library/
+
 *.gem
 *.rbc
 /.config
