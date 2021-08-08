@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
-require 'byebug'
+# require 'byebug'
 require 'yaml'
-require './quote.rb'
+require (__dir__ + '/quote.rb')
 
 # puts "Starting a quote session"
 
@@ -21,7 +21,7 @@ require './quote.rb'
 # puts saying
 
 def init
-  if ARGV.length > 2
+  if ARGV.length > 1
     start_parsing_args ARGV
   else
     get_random_quote
@@ -30,7 +30,9 @@ end
 
 def get_all_authors
   authors = []
-  dirs =  Dir.glob("../library/*.yaml")
+  dirs =  Dir.glob(__dir__ + "/../library/*.yaml")
+  # puts __dir__
+  # puts '-------'
   dirs.each do |file|
     yaml = YAML.load_file(file)
     author = yaml[:author]
@@ -77,7 +79,7 @@ end
 
 def save_quote(args)
   quote = args[0]
-  if args.length > 2
+  if args.length > 1
     args.delete(args[0])
     author = args.join(' ')
     if author[0] == '-'

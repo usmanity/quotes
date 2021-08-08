@@ -1,5 +1,5 @@
 require 'yaml'
-require 'byebug'
+# require 'byebug'
 require 'date'
 
 class Quote
@@ -20,7 +20,7 @@ class Quote
   end
 
   def get_file_name
-    '../library/' + author.gsub(/\s+/, '_').downcase + '.yaml'
+    __dir__ + '/../library/' + author.gsub(/\s+/, '_').downcase + '.yaml'
   end
 
   # def get_random_quote
@@ -43,6 +43,7 @@ class Quote
     quotes_file = open_file
     new_quote = { :quote_text => @quote_text, :date_added => @date_added }
     quotes_file[:quotes] << new_quote
+    puts "File name is #{file_name}"
     File.open(file_name, 'w') do |file|
       file.write YAML.dump quotes_file
     end
